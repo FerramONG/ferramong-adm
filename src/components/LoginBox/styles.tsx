@@ -15,36 +15,65 @@ export const Component = styled.div`
     border-radius: 25px;
     padding: 100px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+
+    form{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        input{
+            background-color: #dedede;
+            font-size:1.2rem;
+            color:#5c5b5b;
+            margin:10px 5px;
+            padding:0.2rem;
+            border-radius: 5px;
+            border:none;
+            outline:none;
+        }
+
+        input#button{
+            cursor:pointer;
+            background-color:#627fe7;
+            color:white;
+            padding: 0.5rem 1.5rem;
+        }
+
+        input#button:hover{
+            background-color: rgba(98,127,231,0.7);
+        }
+    }
 `;
 
-export const BoxForm = styled.div`
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+// export const BoxForm = styled.div`
+//     display:flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
 
-    input{
-        background-color: #dedede;
-        font-size:1.2rem;
-        color:#5c5b5b;
-        margin:10px 5px;
-        padding:0.2rem;
-        border-radius: 5px;
-        border:none;
-        outline:none;
-    }
+//     input{
+//         background-color: #dedede;
+//         font-size:1.2rem;
+//         color:#5c5b5b;
+//         margin:10px 5px;
+//         padding:0.2rem;
+//         border-radius: 5px;
+//         border:none;
+//         outline:none;
+//     }
 
-    input#button{
-        cursor:pointer;
-        background-color:#627fe7;
-        color:white;
-        padding: 0.5rem 1.5rem;
-    }
+//     input#button{
+//         cursor:pointer;
+//         background-color:#627fe7;
+//         color:white;
+//         padding: 0.5rem 1.5rem;
+//     }
 
-    input#button:hover{
-        background-color: rgba(98,127,231,0.7);
-    }
-`;
+//     input#button:hover{
+//         background-color: rgba(98,127,231,0.7);
+//     }
+// `;
 
 export const CreateAccount = styled.div`
     display:flex;

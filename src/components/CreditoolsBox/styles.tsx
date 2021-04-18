@@ -50,7 +50,7 @@ export const Table = styled.table`
     }
 `;
 
-export const CreditCard = styled.div`
+export const CreditCard = styled.form`
     display:flex;
     flex-direction: column;
     justify-content: space-between;

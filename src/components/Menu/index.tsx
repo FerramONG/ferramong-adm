@@ -8,9 +8,9 @@ export default function Menu() {
     return (
         <Container>
             <NavBar>
-            <Link className="link" to="/"><Item>Ferramong</Item></Link>
-            <Link className="link" to="/search"><Item>Ferramentas</Item></Link>
-            <Link className="link" to="/creditools"><Item>CrediTools</Item></Link>
+            <Link className="link" to="/"><Item>Adicionar ferramenta</Item></Link>
+            <Link className="link" to="/search"><Item>Listar</Item></Link>
+            <Link className="link" to="/creditools"><Item>Pesquisar ferramentas</Item></Link>
             {/* <VisitSchedulerModal userId = "123456789"></VisitSchedulerModal> */}
                 <SearchBar>
                     <input type="text" placeholder="Cortador de grama..." />

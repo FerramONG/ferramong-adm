@@ -19,9 +19,10 @@ export const Component = styled.div`
     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 
     h2{
-        align-self: flex-start;
+        align-self: flex-end;;
         padding:10px 30px;
-        //font-weight:600;
+        font-weight:600;
+        font-size:1.2rem;
     }
 
     h1{
@@ -47,38 +48,5 @@ export const Component = styled.div`
 export const Table = styled.table`
     td{
         padding:10px 30px;
-    }
-`;
-
-export const CreditCard = styled.form`
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: space-between;
-
-    input{
-        background-color: #dedede;
-        font-size:1.2rem;
-        color:#5c5b5b;
-        margin:10px 5px;
-        padding:0.2rem;
-        border-radius: 5px;
-        border:none;
-        outline:none;
-    }
-    #name{
-        width:350px;
-    }
-    #cpf{
-        width:250px;
-    }
-    #date{
-        width:100px;
-    }
-    #cvv{
-        width:100px;
-    }
-    #quantity{
-        width:150px;
     }
 `;

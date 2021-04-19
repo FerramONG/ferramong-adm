@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <Menu />
-            <ListPurchaseBox></ListPurchaseBox>
+            <ListPurchaseBox/>
         </div>
     );
 }

@@ -4,7 +4,6 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
 interface ToolProps {
-    img: string;
     name: string;
     category: string;
     price: string;
@@ -29,7 +28,6 @@ export default function ToolBox(props: ToolProps) {
         <Container>
             <MainInfo>
                 <LeftPannel>
-                    <img src={props.img} alt="cortador de grama" />
                     <NameCategory>
                         <h2>{props.name}</h2>
                         <h6>{props.category}</h6>

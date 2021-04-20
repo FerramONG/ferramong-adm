@@ -13,7 +13,7 @@ export const Component = styled.div`
     justify-content: space-between;
     background-color: white;
     border-radius: 25px;
-    padding: 100px;
+    padding: 40px 100px;
     width:50%;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 

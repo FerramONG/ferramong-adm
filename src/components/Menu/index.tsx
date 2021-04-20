@@ -17,7 +17,7 @@ export default function Menu() {
                     <button type="submit"><SearchIcon/></button>
                 </SearchBar> */}
             <Link className="link" to="/listrent"><Item>Listar empréstimos</Item></Link>
-                {/* <Link className="link" to="login"><Login>Entrar</Login></Link> */}
+                <Link className="link" to="/"><Login>Entrar</Login></Link>
             </NavBar>
         </Container>
     )

@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Component, Table } from './styles'
-import { useForm } from "react-hook-form";
 import data from '../../data/CreditoolsInfo'
 
 const CreditoolsBox = () => {
-
-    const { register, handleSubmit } = useForm();
-
-    const onSubmit = (data) => {
-        console.log(data)
-    }
 
     return (
         <Container>

@@ -4,6 +4,7 @@ import Login from '../pages/Login'
 import AddTool from '../pages/AddTool'
 import ListTool from '../pages/ListTool'
 import ListPurchase from '../pages/ListPurchase'
+import ListRent from '../pages/ListRent'
 
 const Routes = () => {
     return (
@@ -13,6 +14,7 @@ const Routes = () => {
                  <Route exact path="/addtool" component={AddTool} />
                  <Route exact path="/listtool" component={ListTool} />
                  <Route exact path="/listpurchase" component={ListPurchase} />
+                 <Route exact path="/listrent" component={ListRent} />
             </Switch>
         </BrowserRouter>
     );

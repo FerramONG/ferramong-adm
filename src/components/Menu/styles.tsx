@@ -15,6 +15,11 @@ export const NavBar = styled.ol`
     padding:0px 1rem;
     font-size:1.2rem;
 
+    img{
+        width:50px;
+        height:50px;
+    }
+
     .link{
         text-decoration:none;
     }

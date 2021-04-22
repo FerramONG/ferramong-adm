@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    padding-top:100px;
+    padding-top:50px;
     display:flex;
     justify-content: center;
     font-family:'Roboto', sans-serif;
@@ -74,12 +74,3 @@ export const Component = styled.div`
 //         background-color: rgba(98,127,231,0.7);
 //     }
 // `;
-
-export const CreateAccount = styled.div`
-    display:flex;
-    flex-direction: column;
-    h3{
-        margin:10px 5px;
-        color:#5c5b5b;
-    }
-`;

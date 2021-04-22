@@ -5,6 +5,8 @@ import AddTool from '../pages/AddTool'
 import ListTool from '../pages/ListTool'
 import ListPurchase from '../pages/ListPurchase'
 import ListRent from '../pages/ListRent'
+import Register from '../pages/Register'
+import ForgotPassword from '../pages/ForgotPassword'
 
 const Routes = () => {
     return (
@@ -15,6 +17,8 @@ const Routes = () => {
                  <Route exact path="/listtool" component={ListTool} />
                  <Route exact path="/listpurchase" component={ListPurchase} />
                  <Route exact path="/listrent" component={ListRent} />
+                 <Route exact path="/register" component={Register} />
+                 <Route exact path="/forgotpassword" component={ForgotPassword} />
             </Switch>
         </BrowserRouter>
     );

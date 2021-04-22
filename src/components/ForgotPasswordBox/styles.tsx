@@ -74,12 +74,3 @@ export const Component = styled.div`
 //         background-color: rgba(98,127,231,0.7);
 //     }
 // `;
-
-export const CreateAccount = styled.div`
-    display:flex;
-    flex-direction: column;
-    h3{
-        margin:10px 5px;
-        color:#5c5b5b;
-    }
-`;

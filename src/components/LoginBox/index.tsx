@@ -20,7 +20,8 @@ export default function LoginBox() {
                         {/*<Link to={"/"}>*/}<input type="submit" value="Entrar" id="button"/> {/*</Link> com esse link pra outra página nao funcionava no console,tem que ver se na api vai*/}
                 </form>
             <CreateAccount>
-                <h3>Não possui uma conta ainda? Cadastre-se <Link to="/">aqui</Link> </h3>
+                <h3>Não possui uma conta ainda? Cadastre-se <Link to="/register">aqui</Link> </h3>
+                <h3>Esqueceu sua senha? Clique <Link to="/forgotpassword">aqui</Link></h3>
             </CreateAccount>
             </Component>
         </Container>

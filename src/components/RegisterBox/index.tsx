@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Component,} from './styles'
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 export default function LoginBox() {
 
     const {register, handleSubmit, formState: { errors }} = useForm();
+    const history = useHistory();
 
     const onSubmit = (data) => {
         console.log('DADOS ENVIADOS PRA API:');
@@ -22,6 +23,7 @@ export default function LoginBox() {
         .then(response => {
             console.log('DADOS DE RESPOSTA:');
             console.log(response);
+            history.push('./addtool');
         })
         .catch(error => {
             console.log('DADOS DE ERRO:');

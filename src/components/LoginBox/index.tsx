@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 export default function LoginBox() {
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: { errors }} = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
@@ -15,8 +15,10 @@ export default function LoginBox() {
         <Container>
             <Component>
                 <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
-                        <input type="text" placeholder="CPF" {...register("cpf")}/>
-                        <input type="password" placeholder="Senha" {...register("senha")}/>
+                        <input type="text" placeholder="CPF" {...register("cpf", { required: true })}/>
+                        {errors.cpf && errors.cpf.type === "required" && <span>Indique seu cpf</span>}
+                        <input type="password" placeholder="Senha" {...register("password", { required: true })}/>
+                        {errors.password && errors.password.type === "required" && <span>Indique sua senha</span>}
                         {/*<Link to={"/"}>*/}<input type="submit" value="Entrar" id="button"/> {/*</Link> com esse link pra outra página nao funcionava no console,tem que ver se na api vai*/}
                 </form>
             <CreateAccount>

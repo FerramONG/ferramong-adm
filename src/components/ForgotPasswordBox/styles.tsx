@@ -15,6 +15,10 @@ export const Component = styled.div`
     border-radius: 25px;
     padding: 100px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    span{
+        color:tomato;
+        font-weight: bold;
+    }
 
     form{
         display:flex;

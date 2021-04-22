@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 export default function LoginBox() {
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: { errors }} = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
@@ -15,11 +15,16 @@ export default function LoginBox() {
         <Container>
             <Component>
                 <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
-                        <input type="text" placeholder="CPF" {...register("cpf")}/>
-                        <input type="text" placeholder="Nome" {...register("name")}/>
-                        <input type="password" placeholder="Senha" {...register("password")}/>
-                        <input type="text" placeholder="Pergunta secreta" {...register("secretQuestion")}/>
-                        <input type="text" placeholder="Resposta secreta" {...register("secretAnswer")}/>
+                        <input type="text" placeholder="CPF" {...register("cpf", { required: true })}/>
+                        {errors.cpf && errors.cpf.type === "required" && <span>Necessário ter um cpf</span>}
+                        <input type="text" placeholder="Nome" {...register("name", { required: true })}/>
+                        {errors.name && errors.name.type === "required" && <span>Indique seu nome</span>}
+                        <input type="password" placeholder="Senha" {...register("password", { required: true })}/>
+                        {errors.password && errors.password.type === "required" && <span>Indique uma senha</span>}
+                        <input type="text" placeholder="Pergunta secreta" {...register("secretQuestion", { required: true })}/>
+                        {errors.secretQuestion && errors.secretQuestion.type === "required" && <span>Indique pergunta secreta</span>}
+                        <input type="text" placeholder="Resposta secreta" {...register("secretAnswer", { required: true })}/>
+                        {errors.secretAnswer && errors.secretAnswer.type === "required" && <span>Indique resposta secreta</span>}
                         {/*<Link to={"/"}>*/}<input type="submit" value="Cadastrar-se" id="button"/> {/*</Link> com esse link pra outra página nao funcionava no console,tem que ver se na api vai*/}
                 </form>
             </Component>

@@ -14,13 +14,13 @@ export default function LoginBox() {
         .then(response => {
             console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
             console.log(response);
-            alert('usuário já logado')
-            history.push('./');
+            // alert('Usuário já logado')
+            history.push('./addtool');
         })
         .catch(error => {
             console.log('DADOS DE ERRO TOKEN:');
             console.log(error);
-            alert('usuário não logado')
+            //alert('Usuário não logado')
         })
     }, []);
 

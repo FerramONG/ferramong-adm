@@ -14,13 +14,13 @@ const ListRentBox = () => {
         .then(response => {
             console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
             console.log(response);
-            alert('usuário logado')
+            //alert('Usuário logado')
         })
         .catch(error => {
             console.log('DADOS DE ERRO TOKEN:');
             console.log(error);
-            alert('usuário não logado')
-            //history.push('./');
+            alert('Necessário estar logado')
+            history.push('./');
         })
     }, []);
 

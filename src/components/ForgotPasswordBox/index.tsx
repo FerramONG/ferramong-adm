@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Component } from './styles'
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { useLogin } from '../../context/GlobalState'
 
 export default function LoginBox() {
+
+    const { userId, setUserId, token, setToken } = useLogin();
+    const history = useHistory();
+    useEffect(() => {
+        axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
+        .then(response => {
+            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+            console.log(response);
+            alert('usuário já logado')
+            history.push('./');
+        })
+        .catch(error => {
+            console.log('DADOS DE ERRO TOKEN:');
+            console.log(error);
+            alert('usuário não logado')
+        })
+    }, []);
+
     const [userQuestion, setUserQuestion] = useState('');
     const [userCpf, setUserCpf] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { register:register2, handleSubmit:handleSubmit2, formState: { errors:errors2 } } = useForm();
     
-    const history = useHistory();
 
     const onSubmit = (data) => {
         console.log('DADOS ENVIADOS PRA API:');

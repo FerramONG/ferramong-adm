@@ -1,8 +1,28 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Container, Component, Table } from './styles'
 import data from '../../data/CreditoolsInfo'
+import { useHistory } from "react-router-dom";
+import { useLogin } from '../../context/GlobalState'
+import axios from 'axios'
 
-const CreditoolsBox = () => {
+const ListPurchaseBox = () => {
+
+    const { userId, setUserId, token, setToken } = useLogin();
+    const history = useHistory();
+    useEffect(() => {
+        axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
+        .then(response => {
+            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+            console.log(response);
+            alert('usuário logado')
+        })
+        .catch(error => {
+            console.log('DADOS DE ERRO TOKEN:');
+            console.log(error);
+            alert('usuário não logado')
+            //history.push('./');
+        })
+    }, []);
 
     return (
         <Container>
@@ -35,4 +55,4 @@ const CreditoolsBox = () => {
         </Container >
     );
 }
-export default CreditoolsBox;
+export default ListPurchaseBox;

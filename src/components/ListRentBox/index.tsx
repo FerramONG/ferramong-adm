@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Component, Table } from './styles'
 import data from '../../data/RentInfo'
+import { useHistory } from "react-router-dom";
+import { useLogin } from '../../context/GlobalState'
+import axios from 'axios'
 
 const ListRentBox = () => {
 
-    const [search, setSearch] = useState('');
-    //const [filteredTools, setFilteredTools] = useState([]);
+    const { userId, setUserId, token, setToken } = useLogin();
+    const history = useHistory();
+    useEffect(() => {
+        axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
+        .then(response => {
+            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+            console.log(response);
+            alert('usuário logado')
+        })
+        .catch(error => {
+            console.log('DADOS DE ERRO TOKEN:');
+            console.log(error);
+            alert('usuário não logado')
+            //history.push('./');
+        })
+    }, []);
 
-    // useEffect( ()=>{
-    //     setFilteredTools(
-    //         data.filter( tool => {
-    //             return tool.name.toLowerCase().includes(search.toLowerCase())
-    //         })
-    //     )
-    // },[search,filteredTools])
+    const [search, setSearch] = useState('');
 
     const filteredTools = data.filter(tool => {
         return tool.name.toLowerCase().includes(search.toLowerCase())

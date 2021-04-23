@@ -1,9 +1,28 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Container, Component } from './styles'
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useLogin } from '../../context/GlobalState'
+import axios from 'axios'
 
 export default function LoginBox() {
+
+    const { userId, setUserId, token, setToken } = useLogin();
+    const history = useHistory();
+    useEffect(() => {
+        axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
+        .then(response => {
+            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+            console.log(response);
+            alert('usuário logado')
+        })
+        .catch(error => {
+            console.log('DADOS DE ERRO TOKEN:');
+            console.log(error);
+            alert('usuário não logado')
+            //history.push('./');
+        })
+    }, []);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 

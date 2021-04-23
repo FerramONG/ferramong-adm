@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import Routes from "./routes/routes";
+import GlobalState from './context/GlobalState';
 
 function App() {
   return (
     <div>
-     <Routes></Routes>
+      <GlobalState>
+        <Routes />
+      </GlobalState>
     </div>
   );
 }

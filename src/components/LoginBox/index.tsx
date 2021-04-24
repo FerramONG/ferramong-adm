@@ -41,7 +41,7 @@ export default function LoginBox() {
                 history.push('./addtool')
                 setUserId(response.data.id)
                 setToken(response.data.token)
-                console.log('RECEBIDO DO LOGIN id:' + response.data.id + 'token: '+ response.data.token)
+                console.log('RECEBIDO DO LOGIN id:' + response.data.id + 'token: ' + response.data.token)
             })
             .catch(error => {
                 console.log('DADOS DE ERRO:');
@@ -57,7 +57,8 @@ export default function LoginBox() {
                     {errors.cpf && errors.cpf.type === "required" && <span>Indique seu cpf</span>}
                     <input type="password" placeholder="Senha" {...register("password", { required: true })} />
                     {errors.password && errors.password.type === "required" && <span>Indique sua senha</span>}
-                    <input type="submit" value="Entrar" id="button" />                 </form>
+                    <input type="submit" value="Entrar" id="button" />
+                </form>
                 <CreateAccount>
                     <h3>Não possui uma conta ainda? Cadastre-se <Link to="/register">aqui</Link> </h3>
                     <h3>Esqueceu sua senha? Clique <Link to="/forgotpassword">aqui</Link></h3>

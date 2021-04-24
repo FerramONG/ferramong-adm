@@ -38,10 +38,11 @@ export default function LoginBox() {
             .then(response => {
                 console.log('DADOS DE RESPOSTA:');
                 console.log(response);
-                history.push('./addtool')
+                history.push('./')
                 setUserId(response.data.id)
                 setToken(response.data.token)
                 console.log('RECEBIDO DO LOGIN id:' + response.data.id + 'token: ' + response.data.token)
+                history.push('./addtool')
             })
             .catch(error => {
                 console.log('DADOS DE ERRO:');

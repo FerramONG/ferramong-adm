@@ -1,9 +1,10 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Container, Component } from './styles'
-import { Link,useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useLogin } from '../../context/GlobalState'
 import axios from 'axios'
+import AddToolScheduler from '../AddToolScheduler'
 
 export default function LoginBox() {
 
@@ -11,17 +12,17 @@ export default function LoginBox() {
     const history = useHistory();
     useEffect(() => {
         axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
-        .then(response => {
-            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
-            console.log(response);
-            //alert('Usuário logado')
-        })
-        .catch(error => {
-            console.log('DADOS DE ERRO TOKEN:');
-            console.log(error);
-            alert('Necessário estar logado')
-            history.push('./');
-        })
+            .then(response => {
+                console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+                console.log(response);
+                //alert('Usuário logado')
+            })
+            .catch(error => {
+                console.log('DADOS DE ERRO TOKEN:');
+                console.log(error);
+                alert('Necessário estar logado')
+                history.push('./');
+            })
     }, [token]);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -48,19 +49,16 @@ export default function LoginBox() {
                     <input type="text" id="owner" placeholder="Dono" {...register("owner", { required: true })} />
                     {errors.owner && errors.owner.type === "required" && <span>Necessário ter um dono</span>}
 
-                    <input type="number" id="price" placeholder="Preço" {...register("price", { required: true })} />
+                    <input type="text" id="price" placeholder="Preço" {...register("price", { required: true })} />
                     {errors.price && errors.price.type === "required" && <span>Necessário ter um preço</span>}
 
-                    <select id="category" {...register("category")}>
-
-                        <option value="Jardinagem">Jardinagem</option>
-                        <option value="Proteção">Proteção</option>
-                        <option value="Marcenaria">Marcenaria</option>
-                    </select>
+                    <input type="text" id="category" placeholder="Categoria" {...register("category", { required: true })} />
                     {errors.category && errors.category.value === "categoria" && <span>Necessário ter uma categoria</span>}
 
-                    <input type="text" id="deadline" placeholder="Data limite" {...register("deadline")} /> {/*AQUI TEM QUE COLOCAR O CALENDARIO PARA ENVIAR DATA */}
-                    {errors.deadline && errors.deadline.type === "required" && <span>Necessário ter um nome</span>}
+                    <div id='calendarBox'>
+                        <div id='calendar'><AddToolScheduler title="Inicio" /></div>
+                        <div id='calendar'><AddToolScheduler title="Fim" /></div>
+                    </div>
 
                     {/*<Link to={"/"}>*/}<input type="submit" value="Adicionar" id="button" /> {/*</Link> com esse link pra outra página nao funcionava no console,tem que ver se na api vai*/}
                 </form>

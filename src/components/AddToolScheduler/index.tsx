@@ -20,19 +20,19 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-interface PropTypes {
-  userId: string
-}
+// interface PropTypes {
+//   userId: string
+// }
 
-export default function VisitSchedulerModal(props: PropTypes) {
-  const { userId } = props;
+export default function VisitSchedulerModal(props) {
+  // const { userId } = props;
   const [openScheduleVisit, setOpenScheduleVisit] = React.useState(false);
   const [openCancelVisit, setOpenCancelVisit] = React.useState(false);
   //const [hasVisit, setHasVisit] = React.useState(false);
   const [selectedDate, setSelectedDate] = React.useState<MaterialUiPickersDate>(new Date());
 
   const handleClickOpen = () => {
-    axios.get('https://ferramong-scheduler.herokuapp.com/scheduler/dweller/' + userId).then((response) => {
+    axios.get('https://ferramong-scheduler.herokuapp.com/scheduler/dweller/').then((response) => {
       if (response.data[0] !== undefined) {
         console.log(response);
         setSelectedDate(new Date(Date.parse(response.data[0].date)));
@@ -59,7 +59,7 @@ export default function VisitSchedulerModal(props: PropTypes) {
     console.log(selectedDate);
     setOpenScheduleVisit(false);
     axios.post('https://ferramong-scheduler.herokuapp.com/scheduler/', {
-      idDweller: parseInt(userId),
+     // idDweller: parseInt(),
       date: selectedDate?.toISOString(),
     });
   };
@@ -68,13 +68,13 @@ export default function VisitSchedulerModal(props: PropTypes) {
     //setHasVisit(false);
     //console.log(hasVisit)
     setOpenCancelVisit(false)
-    axios.get('https://ferramong-scheduler.herokuapp.com/unscheduler/' + userId);
+    axios.get('https://ferramong-scheduler.herokuapp.com/unscheduler/' );
   }
 
   return (
     <Container>
       <Button className="button" variant="contained" color="primary" onClick={handleClickOpen}>
-        Emprestar ferramenta
+        {props.title}
       </Button>
       <Dialog
         open={openScheduleVisit}

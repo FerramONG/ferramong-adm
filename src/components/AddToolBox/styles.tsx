@@ -66,5 +66,19 @@ export const Component = styled.div`
             font-weight: bold;
             color:tomato;
         }
+
+        #calendarBox{
+            display:flex;
+            flex-direction:row;
+            justify-content: center;
+            #calendar{
+                margin:10px;
+            }
+
+            span{
+                color:white;
+            }
+        }
     }
 `;
+

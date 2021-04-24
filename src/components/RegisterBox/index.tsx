@@ -12,6 +12,7 @@ export default function LoginBox() {
     useEffect(() => {
         axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
         .then(response => {
+            history.push('./register')
             console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
             console.log(response);
             //alert('Usuário já logado')

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Component, Table } from './styles'
+import { Box, Container, Component, Report, Table } from './styles'
 import data from '../../data/CreditoolsInfo'
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -80,85 +80,90 @@ const ListPurchaseBox = () => {
     }
 
     return (
-        <Container>
-            <Component>
-                <form className="contact-form" onSubmit={handleSubmit(onSearch)}>
-                    <input type="text" placeholder="Pesquisar usuário" {...register("dwellerName", { required: true })} />
-                    <input type="submit" value="Pesquisar" id="button" />
-                </form>
-                <h1>Histórico de vendas de Creditools</h1>
+        <Box>
+            <form className="contact-form" onSubmit={handleSubmit(onSearch)}>
+                <input type="text" placeholder="Pesquisar usuário" {...register("dwellerName", { required: true })} />
+                <input type="submit" value="Pesquisar" id="button" />
+            </form>
 
-                <Table>
-                    <tbody>
-                        <tr>
-                            <td>Usuário</td>
-                            <td>Data</td>
-                            <td>Quantidade adquirida</td>
-                        </tr>
-                        {
-                            purchaseData.map(purchase => {
-                                // axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/id/' + purchase['id_dweller'])
-                                //     .then(response => {
-                                //         setDwellerName(response.data.name);
-                                //     })
-                                //     .catch(error => {
-                                //         console.log('DADOS DE ERRO DwellerName:');
-                                //         console.log(error);
-                                //     })
-                                const date = new Date(purchase['date'])
-                                const month = '' + (date.getMonth() + 1)
-                                const day = '' + date.getDate()
-                                const year = date.getFullYear();
+            <Container>
 
-                                return (
-                                    <tr>
-                                        <td>{purchase['id_dweller']}</td>
-                                        <td>{day + ' / ' + month + ' / ' + year}</td>
-                                        <td>{purchase['total']} Creditools</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </Table>
+                <Component>
+                    <h1>Histórico de vendas de Creditools</h1>
 
-                <h2>Total arrecadado:{ } R$,00</h2>
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <td>Usuário</td>
+                                <td>Data</td>
+                                <td>Quantidade adquirida</td>
+                            </tr>
+                            {
+                                purchaseData.map(purchase => {
+                                    // axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/id/' + purchase['id_dweller'])
+                                    //     .then(response => {
+                                    //         setDwellerName(response.data.name);
+                                    //     })
+                                    //     .catch(error => {
+                                    //         console.log('DADOS DE ERRO DwellerName:');
+                                    //         console.log(error);
+                                    //     })
+                                    const date = new Date(purchase['date'])
+                                    const month = '' + (date.getMonth() + 1)
+                                    const day = '' + date.getDate()
+                                    const year = date.getFullYear();
 
-                <h1>Compras do usuário {dwellerName}</h1>
-                <Table>
-                    <tbody>
-                        <tr>
-                            <td>Data</td>
-                            <td>Quantidade adquirida</td>
-                        </tr>
-                        {
-                            searchedDwellerPurchases.map(purchase => {
-                                // axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/id/' + purchase['id_dweller'])
-                                //     .then(response => {
-                                //         setDwellerName(response.data.name);
-                                //     })
-                                //     .catch(error => {
-                                //         console.log('DADOS DE ERRO DwellerName:');
-                                //         console.log(error);
-                                //     })
-                                const date = new Date(purchase['date'])
-                                const month = '' + (date.getMonth() + 1)
-                                const day = '' + date.getDate()
-                                const year = date.getFullYear();
+                                    return (
+                                        <tr>
+                                            <td>{purchase['id_dweller']}</td>
+                                            <td>{day + ' / ' + month + ' / ' + year}</td>
+                                            <td>{purchase['total']} Creditools</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </Table>
 
-                                return (
-                                    <tr>
-                                        <td>{day + ' / ' + month + ' / ' + year}</td>
-                                        <td>{purchase['total']} Creditools</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </Table>
-            </Component>
+                    <h2>Total arrecadado:{ } R$,00</h2>
+                </Component>
+                <Component>
+                    <h1>Compras do usuário {dwellerName}</h1>
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <td>Data</td>
+                                <td>Quantidade adquirida</td>
+                            </tr>
+                            {
+                                searchedDwellerPurchases.map(purchase => {
+                                    // axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/id/' + purchase['id_dweller'])
+                                    //     .then(response => {
+                                    //         setDwellerName(response.data.name);
+                                    //     })
+                                    //     .catch(error => {
+                                    //         console.log('DADOS DE ERRO DwellerName:');
+                                    //         console.log(error);
+                                    //     })
+                                    const date = new Date(purchase['date'])
+                                    const month = '' + (date.getMonth() + 1)
+                                    const day = '' + date.getDate()
+                                    const year = date.getFullYear();
 
-        </Container >
+                                    return (
+                                        <tr>
+                                            <td>{day + ' / ' + month + ' / ' + year}</td>
+                                            <td>{purchase['total']} Creditools</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </Table>
+                </Component>
+
+            </Container >
+        </Box>
     );
 }
 export default ListPurchaseBox;

@@ -1,8 +1,38 @@
 import styled from 'styled-components';
 
+export const Box = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
+    form{
+        display:flex;
+    }
+    input{
+        font-size:1.2rem;
+        outline:none;
+        border:none;
+        box-shadow:2px 2px 5px rgba(0,0,0,0.7);
+        border-radius:10px;
+        margin:10px;
+        padding:10px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input#button{
+            cursor:pointer;
+            background-color:#627fe7;
+            color:white;
+            padding: 0.5rem 1.5rem;
+        }
+`;
+
 export const Container = styled.div`
     padding-top:50px;
     display:flex;
+    flex-direction:row;
     justify-content: center;
     font-family:'Roboto', sans-serif;
 `;
@@ -10,7 +40,7 @@ export const Container = styled.div`
 export const Component = styled.div`
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: white;
     border-radius: 25px;
@@ -43,6 +73,13 @@ export const Component = styled.div`
         border:none;
         outline:none;
     }
+`;
+
+export const Report = styled.div`
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 export const Table = styled.table`

@@ -1,16 +1,3 @@
-// import React from 'react'; 
-
-// type IUserState = {
-//     currentUser?: object;
-// };
-
-// type ICurrentUserContext = [IUserState, React.Dispatch<React.SetStateAction<IUserState>>];
-
-// const GlobalState = React.createContext<ICurrentUserContext>([{}, () => null]);
-
-// //const GlobalState = React.createContext([{}, () => {}]); 
-// export default GlobalState;
-
 import React, { createContext, useState, useContext } from "react";
 
 const CountContext = createContext();
@@ -18,6 +5,8 @@ const CountContext = createContext();
 export default function CountProvider({ children }) {
   const [userId, setUserId] = useState();
   const [token,setToken] = useState();
+  const [startDateTool,setStartDateTool] = useState();
+  const [endDateTool,setEndDateTool] = useState();
 
   return (
     <CountContext.Provider
@@ -25,7 +14,11 @@ export default function CountProvider({ children }) {
         userId,
         setUserId,
         token,
-        setToken
+        setToken,
+        startDateTool,
+        setStartDateTool,
+        endDateTool,
+        setEndDateTool
       }}
     >
       {children}
@@ -36,6 +29,6 @@ export default function CountProvider({ children }) {
 export function useLogin() {
   const context = useContext(CountContext);
   if (!context) throw new Error("useCount must be used within a CountProvider");
-  const { userId, setUserId, token, setToken } = context;
-  return { userId, setUserId, token, setToken};
+  const { userId, setUserId, token, setToken, startDateTool, setStartDateTool, endDateTool, setEndDateTool } = context;
+  return { userId, setUserId, token, setToken, startDateTool, setStartDateTool, endDateTool, setEndDateTool};
 }

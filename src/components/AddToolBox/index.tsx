@@ -4,11 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useLogin } from '../../context/GlobalState'
 import axios from 'axios'
-import AddToolScheduler from '../AddToolScheduler'
+import AddToolSchedulerStart from '../AddToolSchedulerStart'
+import AddToolSchedulerEnd from '../AddToolSchedulerEnd'
 
 export default function LoginBox() {
 
-    const { userId, setUserId, token, setToken } = useLogin();
+    const { userId, setUserId, token, setToken, startDateTool, setStartDateTool, endDateTool, setEndDateTool } = useLogin();
     const history = useHistory();
     useEffect(() => {
         axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
@@ -28,7 +29,42 @@ export default function LoginBox() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
+            console.log('INFO DA FERRAMENTA MANDANDO PRA API')
+            console.log(data.ownerId)
+            console.log(data.name)
+            console.log(data.category)
+            console.log(data.description)
+            console.log(data.instructions)
+            console.log(startDateTool)
+            console.log(endDateTool)
+            console.log(data.price)
+
+
+
+        // let postHeader = {
+        //     headers: {
+        //         'dwellerId': data.ownerId
+        //     }
+        //   };
+
+        //FAZER UM IF PRA CASO startDateTool e/ou endDateTool sejam undefined
+
+        // axios.post('https://ferramong-tools-manager.herokuapp.com/tools', {
+        //     name: data.name,
+        //     category:data.category,
+        //     description: data.description,
+        //     instructions: data.instructions,
+        //     availableFrom: startDateTool,
+        //     availableUntil: endDateTool
+        // })
+        //     .then(response => {
+        //         console.log('CADASTROU FERRAMENTA')
+        //         console.log(response)
+        //     })
+        //     .catch(error => {
+        //         console.log('DEU ERRO NO CADASTRO DE FERRAMENTA')
+        //         console.log(error)
+        //     })
     }
 
     return (
@@ -40,27 +76,27 @@ export default function LoginBox() {
                     <input type="text" id="name" placeholder="Nome" {...register("name", { required: true })} />
                     {errors.name && errors.name.type === "required" && <span>Necessário ter um nome</span>}
 
-                    <textarea id="utility" placeholder="Utilidade" {...register("utility", { maxLength: 50 })} />
-                    {errors.utility && errors.utility.type === "maxLength" && <span>Tamanho máximo excedido</span>}
+                    <textarea id="utility" placeholder="Descrição" {...register("description", { maxLength: 50 })} />
+                    {errors.description && errors.description.type === "maxLength" && <span>Tamanho máximo excedido</span>}
 
                     <textarea id="instructions" placeholder="Instruções de uso" {...register("instructions", { maxLength: 50 })} />
                     {errors.instructions && errors.instructions.type === "maxLength" && <span>Tamanho máximo excedido</span>}
 
-                    <input type="text" id="owner" placeholder="Dono" {...register("owner", { required: true })} />
-                    {errors.owner && errors.owner.type === "required" && <span>Necessário ter um dono</span>}
+                    <input type="number" id="owner" placeholder="Id do dono" {...register("ownerId", { required: true })} />
 
-                    <input type="text" id="price" placeholder="Preço" {...register("price", { required: true })} />
+
+                    <input type="number" id="price" placeholder="Preço" {...register("price", { required: true })} />
                     {errors.price && errors.price.type === "required" && <span>Necessário ter um preço</span>}
 
                     <input type="text" id="category" placeholder="Categoria" {...register("category", { required: true })} />
                     {errors.category && errors.category.value === "categoria" && <span>Necessário ter uma categoria</span>}
 
                     <div id='calendarBox'>
-                        <div id='calendar'><AddToolScheduler title="Inicio" /></div>
-                        <div id='calendar'><AddToolScheduler title="Fim" /></div>
+                        <div id='calendar'><AddToolSchedulerStart title="Inicio" /></div>
+                        <div id='calendar'><AddToolSchedulerEnd title="Fim" /></div>
                     </div>
 
-                    {/*<Link to={"/"}>*/}<input type="submit" value="Adicionar" id="button" /> {/*</Link> com esse link pra outra página nao funcionava no console,tem que ver se na api vai*/}
+                    <input type="submit" value="Adicionar" id="button" />
                 </form>
             </Component>
         </Container>

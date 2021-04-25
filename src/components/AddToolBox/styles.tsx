@@ -27,6 +27,12 @@ export const Component = styled.div`
         margin: 0px 10px;
     }
 
+    h3{
+        font-size: 1.2rem;
+        font-family:'Roboto', sans-serif;
+        margin: 0px 10px;
+    }
+
     form{
         display:flex;
         flex-direction: column;

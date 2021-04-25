@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Component } from './styles'
 import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -28,12 +28,13 @@ export default function LoginBox() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { register: register2, handleSubmit: handleSubmit2, formState: { errors: errors2 } } = useForm();
+    const [ searchedId, setSearchedId ] = useState('');
 
     const onSearch = (data) => {
-        axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/name/teste' + data.name)
+        axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/name/' + data.name)
             .then(response => {
-                console.log('PROCUROU ID PELO NOME')
-                console.log(response)
+                // console.log('PROCUROU ID PELO NOME')
+                setSearchedId('O ID do usuário é: '+ response.data.id)
             })
             .catch(error => {
                 console.log('DEU ERRO NA PROCURA PELO ID')
@@ -43,14 +44,14 @@ export default function LoginBox() {
 
     const onSubmit = (data) => {
         console.log('INFO DA FERRAMENTA MANDANDO PRA API')
-        console.log(data.ownerId)
-        console.log(data.name)
-        console.log(data.category)
-        console.log(data.description)
-        console.log(data.instructions)
-        console.log(startDateTool)
-        console.log(endDateTool)
-        console.log(data.price)
+        console.log('ID do dono:'+data.ownerId)
+        console.log('Nome da ferramenta:'+data.name)
+        console.log('Categoria:'+data.category)
+        console.log('Descrição:'+data.description)
+        console.log('Instruções:'+data.instructions)
+        console.log('Data inicio:'+startDateTool)
+        console.log('Data fim:'+endDateTool)
+        console.log('Preço:'+data.price)
 
         axios.post('https://ferramong-tools-manager.herokuapp.com/tools', {
             name: data.name,
@@ -58,7 +59,8 @@ export default function LoginBox() {
             description: data.description,
             instructions: data.instructions,
             availableFrom: startDateTool,
-            availableUntil: endDateTool
+            availableUntil: endDateTool,
+            price: data.price
         },
             {
                 headers: {
@@ -68,7 +70,10 @@ export default function LoginBox() {
         )
             .then(response => {
                 console.log('CADASTROU FERRAMENTA')
-                console.log(response)
+                console.log(response.status)
+                if(response.status==201){
+                    alert('Ferramenta cadastrada com sucesso!')
+                }
             })
             .catch(error => {
                 console.log('DEU ERRO NO CADASTRO DE FERRAMENTA')
@@ -83,6 +88,7 @@ export default function LoginBox() {
                 <form className="search-form" onSubmit={handleSubmit2(onSearch)}>
                     <input type="text" id="name" placeholder="Nome do dono" {...register2("name", { required: true })} />
                     {errors2.name && errors2.name.type === "required" && <span>Necessário informar nome</span>}
+                    <h3>{searchedId}</h3>
                     <input type="submit" value="Procurar" id="buttonSearch" />
                 </form>
             </Component>

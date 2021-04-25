@@ -72,7 +72,11 @@ export default function VisitSchedulerModal(props) {
     month = '' + (selectedDate.getMonth() + 1)
     day = '' + selectedDate.getDate()
     year = selectedDate.getFullYear();
-    fullDate = year + '-' + month + '-' + day;
+    if(month<10){
+      fullDate = year + '-0' + month + '-' + day;
+    }else{
+      fullDate = year + '-' + month + '-' + day;
+    }
     setEndDateTool(fullDate);
     setOpenScheduleVisit(false);
     setDateChecked(true);

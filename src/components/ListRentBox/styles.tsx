@@ -20,6 +20,24 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
     }
+
+    form{
+        display:flex;
+        flex-direction: row;
+    }
+
+     input#buttonSearch{
+        cursor:pointer;
+        background-color:#627fe7;
+        color:white;
+        padding: 0.5rem 1.5rem;
+        width:50%;
+        align-self: center;
+    }
+
+    input#buttonSearch:hover{
+        background-color: rgba(98,127,231,0.7);
+    }
 `;
 
 export const Component = styled.div`

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Container, Component, Table } from './styles'
 import data from '../../data/RentInfo'
 import { useHistory } from "react-router-dom";
-import { useLogin } from '../../context/GlobalState'
+import { useForm } from "react-hook-form";
+import { useLogin } from '../../context/GlobalState';
 import axios from 'axios'
 
 const ListRentBox = () => {
@@ -11,18 +12,35 @@ const ListRentBox = () => {
     const history = useHistory();
     useEffect(() => {
         axios.get('https://ferramong-auth.herokuapp.com/authenticator/validateToken/' + token)
-        .then(response => {
-            console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
-            console.log(response);
-            //alert('Usuário logado')
-        })
-        .catch(error => {
-            console.log('DADOS DE ERRO TOKEN:');
-            console.log(error);
-            alert('Necessário estar logado')
-            history.push('./');
-        })
+            .then(response => {
+                console.log('DADOS DE RESPOSTA DA CONFIRMACAO DE TOKEN:');
+                console.log(response);
+                //alert('Usuário logado')
+            })
+            .catch(error => {
+                console.log('DADOS DE ERRO TOKEN:');
+                console.log(error);
+                alert('Necessário estar logado')
+                history.push('./');
+            })
     }, []);
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSearch = (data) => {
+        axios.get('https://ferramong-tools-manager.herokuapp.com/rentals',{
+            headers: {
+                'dwellerId': data.dwellerId
+            }
+        })
+            .then(response => {
+                console.log('PROCUROU ID PELO NOME')
+                console.log(response)
+            })
+            .catch(error => {
+                console.log('DEU ERRO NA PROCURA PELO ID')
+                console.log(error)
+            })
+    }
 
     const [search, setSearch] = useState('');
 
@@ -32,7 +50,12 @@ const ListRentBox = () => {
 
     return (
         <Container>
-            <input type="text" placeholder="Pesquisar usuário" onChange={e => setSearch(e.target.value)} />
+            {/* <input type="text" placeholder="Pesquisar usuário" onChange={e => setSearch(e.target.value)} /> */}
+            <form className="search-form" onSubmit={handleSubmit(onSearch)}>
+                <input type="text" id="dwellerId" placeholder="ID do dono" {...register("dwellerId", { required: true })} />
+                {errors.dwellerId && errors.dwellerId.type === "required" && <span>Necessário informar nome</span>}
+                <input type="submit" value="Procurar" id="buttonSearch" />
+            </form>
             <Component>
                 <h1>Histórico de alugúeis e empréstimos</h1>
                 <Table>

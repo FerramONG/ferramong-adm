@@ -27,48 +27,65 @@ export default function LoginBox() {
     }, [token]);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register: register2, handleSubmit: handleSubmit2, formState: { errors: errors2 } } = useForm();
+
+    const onSearch = (data) => {
+        axios.get('https://ferramong-auth.herokuapp.com/accountManager/getDweller/name/teste' + data.name)
+            .then(response => {
+                console.log('PROCUROU ID PELO NOME')
+                console.log(response)
+            })
+            .catch(error => {
+                console.log('DEU ERRO NA PROCURA PELO ID')
+                console.log(error)
+            })
+    }
 
     const onSubmit = (data) => {
-            console.log('INFO DA FERRAMENTA MANDANDO PRA API')
-            console.log(data.ownerId)
-            console.log(data.name)
-            console.log(data.category)
-            console.log(data.description)
-            console.log(data.instructions)
-            console.log(startDateTool)
-            console.log(endDateTool)
-            console.log(data.price)
+        console.log('INFO DA FERRAMENTA MANDANDO PRA API')
+        console.log(data.ownerId)
+        console.log(data.name)
+        console.log(data.category)
+        console.log(data.description)
+        console.log(data.instructions)
+        console.log(startDateTool)
+        console.log(endDateTool)
+        console.log(data.price)
 
-
-
-        // let postHeader = {
-        //     headers: {
-        //         'dwellerId': data.ownerId
-        //     }
-        //   };
-
-        //FAZER UM IF PRA CASO startDateTool e/ou endDateTool sejam undefined
-
-        // axios.post('https://ferramong-tools-manager.herokuapp.com/tools', {
-        //     name: data.name,
-        //     category:data.category,
-        //     description: data.description,
-        //     instructions: data.instructions,
-        //     availableFrom: startDateTool,
-        //     availableUntil: endDateTool
-        // })
-        //     .then(response => {
-        //         console.log('CADASTROU FERRAMENTA')
-        //         console.log(response)
-        //     })
-        //     .catch(error => {
-        //         console.log('DEU ERRO NO CADASTRO DE FERRAMENTA')
-        //         console.log(error)
-        //     })
+        axios.post('https://ferramong-tools-manager.herokuapp.com/tools', {
+            name: data.name,
+            category: data.category,
+            description: data.description,
+            instructions: data.instructions,
+            availableFrom: startDateTool,
+            availableUntil: endDateTool
+        },
+            {
+                headers: {
+                    'dwellerId': parseInt(data.ownerId),
+                }
+            }
+        )
+            .then(response => {
+                console.log('CADASTROU FERRAMENTA')
+                console.log(response)
+            })
+            .catch(error => {
+                console.log('DEU ERRO NO CADASTRO DE FERRAMENTA')
+                console.log(error)
+            })
     }
 
     return (
         <Container>
+            <Component>
+                <h1>Não sabe o ID do usuário? Encontre aqui</h1>
+                <form className="search-form" onSubmit={handleSubmit2(onSearch)}>
+                    <input type="text" id="name" placeholder="Nome do dono" {...register2("name", { required: true })} />
+                    {errors2.name && errors2.name.type === "required" && <span>Necessário informar nome</span>}
+                    <input type="submit" value="Procurar" id="buttonSearch" />
+                </form>
+            </Component>
             <Component>
                 <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
                     <h1>Cadastrar nova ferramenta</h1>

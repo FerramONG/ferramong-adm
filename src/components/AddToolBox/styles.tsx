@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
     padding-top:10px;
     display:flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family:'Roboto', sans-serif;
 `;
 
@@ -14,6 +16,7 @@ export const Component = styled.div`
     background-color: white;
     border-radius: 25px;
     padding: 40px 100px;
+    margin: 1rem;
     width:50%;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
 
@@ -47,7 +50,8 @@ export const Component = styled.div`
             
         }
 
-        input#button{
+        input#button,
+        input#buttonSearch{
             cursor:pointer;
             background-color:#627fe7;
             color:white;
@@ -56,7 +60,8 @@ export const Component = styled.div`
             align-self: center;
         }
 
-        input#button:hover{
+        input#button:hover,
+        input#buttonSearch:hover{
             background-color: rgba(98,127,231,0.7);
         }
 

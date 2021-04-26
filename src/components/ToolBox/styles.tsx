@@ -6,7 +6,7 @@ export const Container = styled.div`
     display:flex;
     flex-direction: column;
     width: 70%;
-    padding:1rem;
+    padding:3rem 1rem;
     margin:1rem;
     font-family: Roboto,sans-serif;
     position:relative;
@@ -90,7 +90,7 @@ export const NameCategory = styled.div`
 export const ExtraInfo = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 1rem 0px;
+    margin: 1rem 1rem;
     b{
         font-weight: bold;
     }
@@ -102,7 +102,26 @@ export const ExtraInfo = styled.div`
 export const Send = styled.div`
     display:flex;
     align-self:center;
+    justify-content: center;
     span{
         font-size:1rem;
+    }
+    button{
+        align-self:center;
+        font-size:1.5rem;
+        background-color: tomato;
+    }
+    button:hover{
+        background-color: rgba(255,99,71,0.6);
+    }
+`;
+
+export const Dates = styled.div`
+    display:flex;
+    align-self:center;
+    justify-content: space-around;
+
+    #date_component{
+        margin: 0.2rem 1rem;
     }
 `;

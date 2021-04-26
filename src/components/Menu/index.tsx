@@ -13,7 +13,7 @@ export default function Menu() {
                 <Link className="link" to="/addtool"><Item>Adicionar ferramenta</Item></Link>
                 <Link className="link" to="/listtool"><Item>Listar ferramentas</Item></Link>
                 <Link className="link" to="/listpurchase"><Item>Listar compras</Item></Link>
-                <Link className="link" to="/listrent"><Item>Listar empréstimos</Item></Link>
+                {/* <Link className="link" to="/listrent"><Item>Listar empréstimos</Item></Link> */}
                 <Link className="link" to="/"><Login>Entrar</Login></Link>
             </NavBar>
         </Container>

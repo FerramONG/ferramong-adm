@@ -26,6 +26,7 @@ const ListRentBox = () => {
     }, []);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [rentedTools, setRentedTools] = useState([]);
     const onSearch = (data) => {
         axios.get('https://ferramong-tools-manager.herokuapp.com/rentals',{
             headers: {
@@ -33,11 +34,11 @@ const ListRentBox = () => {
             }
         })
             .then(response => {
-                console.log('PROCUROU ID PELO NOME')
+                console.log('FERRAMENTAS ALUGADAS PELO ID PESQUISADO')
                 console.log(response)
             })
             .catch(error => {
-                console.log('DEU ERRO NA PROCURA PELO ID')
+                console.log('DEU ERRO NA PROCURA PELOS EMPRÉSTIMOS')
                 console.log(error)
             })
     }
@@ -52,7 +53,7 @@ const ListRentBox = () => {
         <Container>
             {/* <input type="text" placeholder="Pesquisar usuário" onChange={e => setSearch(e.target.value)} /> */}
             <form className="search-form" onSubmit={handleSubmit(onSearch)}>
-                <input type="text" id="dwellerId" placeholder="ID do dono" {...register("dwellerId", { required: true })} />
+                <input type="text" id="dwellerId" placeholder="ID do usuário" {...register("dwellerId", { required: true })} />
                 {errors.dwellerId && errors.dwellerId.type === "required" && <span>Necessário informar nome</span>}
                 <input type="submit" value="Procurar" id="buttonSearch" />
             </form>

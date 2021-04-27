@@ -125,7 +125,7 @@ const ListPurchaseBox = () => {
                         </tbody>
                     </Table>
 
-                    <h2>Total arrecadado:{ } R$,00</h2>
+                    {/* <h2>Total arrecadado:{ } R$,00</h2> */}
                 </Component>
                 <Component>
                     <h1>Compras do usuário {dwellerName}</h1>

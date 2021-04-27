@@ -40,7 +40,7 @@ export const Container = styled.div`
 export const Component = styled.div`
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     background-color: white;
     border-radius: 25px;

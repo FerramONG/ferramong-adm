@@ -12,13 +12,17 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                 <Route exact path="/" component={Login} />
-                 <Route exact path="/addtool" component={AddTool} />
-                 <Route exact path="/listtool" component={ListTool} />
-                 <Route exact path="/listpurchase" component={ListPurchase} />
-                 <Route exact path="/listrent" component={ListRent} />
-                 <Route exact path="/register" component={Register} />
-                 <Route exact path="/forgotpassword" component={ForgotPassword} />
+                <Route exact path="/" component={Login} />
+                <Route exact path="/addtool" component={AddTool} />
+                <Route exact path="/listtool" component={ListTool} />
+                <Route exact path="/listpurchase" component={ListPurchase} />
+                <Route exact path="/listrent" component={ListRent} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/forgotpassword" component={ForgotPassword} />
+                <Route path='/relatorio-pdf' component={() => {
+                    window.location.href = 'https://ferramong-reports.herokuapp.com/sales/report/2021-04-20/2021-05-01';
+                    return null;
+                }} />
             </Switch>
         </BrowserRouter>
     );

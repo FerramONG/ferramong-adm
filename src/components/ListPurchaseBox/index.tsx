@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Container, Component, Report, Table } from './styles'
 import data from '../../data/CreditoolsInfo'
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useLogin } from '../../context/GlobalState'
@@ -85,6 +86,8 @@ const ListPurchaseBox = () => {
                 <input type="text" placeholder="Pesquisar usuário" {...register("dwellerName", { required: true })} />
                 <input type="submit" value="Pesquisar" id="button" />
             </form>
+            <Link to="relatorio-pdf"><input type="submit" value="Pesquisar" placeholder="Pesquisar" id="button" /></Link>
+
 
             <Container>
 

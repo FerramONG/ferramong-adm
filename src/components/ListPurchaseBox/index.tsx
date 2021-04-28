@@ -86,7 +86,7 @@ const ListPurchaseBox = () => {
                 <input type="text" placeholder="Pesquisar usuário" {...register("dwellerName", { required: true })} />
                 <input type="submit" value="Pesquisar" id="button" />
             </form>
-            <Link to="relatorio-pdf"><input type="submit" value="Pesquisar" placeholder="Pesquisar" id="button" /></Link>
+            <Link to="relatorio-pdf"><input type="submit" value="Gerar relatório" placeholder="Pesquisar" id="button" /></Link>
 
 
             <Container>

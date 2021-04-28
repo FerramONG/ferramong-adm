@@ -10,7 +10,7 @@ export const NavBar = styled.ol`
     align-items: center;
     height:3rem;
     width:100%;
-    background-color: #627fe7;
+    background-color: #292929;
     font-family:'Roboto', sans-serif;
     padding:0px 1rem;
     font-size:1.2rem;
